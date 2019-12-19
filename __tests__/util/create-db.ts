@@ -1,4 +1,5 @@
 import uuid from "uuid/v4";
+
 export interface DBRefs {
   db?: PouchDB.Database;
 }

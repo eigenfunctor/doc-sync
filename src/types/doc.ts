@@ -5,36 +5,34 @@ export type DocID = string;
 
 export interface Doc<T> {
   _id: DocID;
+  path: Path;
   type: string;
-  content: T;
+  content?: Partial<T>;
 }
 
 export type Path = string[];
+
+export interface ListQuery {
+  skip?: number;
+  take?: number;
+}
 
 export interface DocHandle<T> {
   readonly db: PouchDB.Database;
   readonly spec: () => ValidationSpec<T>;
   readonly docID: string;
-  readonly one: {
-    [K in keyof T]?: (id?: DocID) => Promise<Doc<T[K]>>;
-  };
   readonly path: {
     [K in keyof T]?: () => Promise<PathHandle<T[K]>>;
   };
   resolve(): Promise<Doc<T>>;
-  mutate(doc: Doc<T>): Promise<void>;
-}
-
-export interface ListQuery {
-  skip?: number;
-  take?: number;
-  find?: PouchDB.Find.FindRequest<any>;
+  mutate(mutator: (doc: Doc<T>) => Doc<T>): Promise<void>;
 }
 
 export interface PathHandle<T> {
   readonly db: PouchDB.Database;
   readonly spec: () => ValidationSpec<T>;
   readonly path: Path;
-  one(id?: DocID): Promise<DocHandle<T>>;
+  create(): Promise<DocHandle<T>>;
   list(query: ListQuery): Promise<DocHandle<T>[]>;
+  find(id?: DocID): Promise<DocHandle<T> | void>;
 }
