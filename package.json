@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "Shared and synchronized document models for the client and server.",
   "main": "build/index.js",
-  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
   "dependencies": {
     "pouchdb": "^7.1.1",
+    "pouchdb-adapter-memory": "^7.1.1",
+    "pouchdb-validation": "^4.2.0",
     "ramda": "^0.26.1",
     "uuid": "^3.3.3"
   },
