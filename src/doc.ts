@@ -1,9 +1,9 @@
 import * as R from "ramda";
 import * as PouchDB from "pouchdb";
-import uuid from "uuid/v5";
+import uuid from "uuid/v4";
 import { getView, getViewDocID } from "./validation";
 import {
-  ValidationSpec,
+  SpecFunction,
   Doc,
   DocHandle,
   DocID,
@@ -14,14 +14,14 @@ import {
 
 export async function useRoot<T>(
   db: PouchDB.Database,
-  spec: () => ValidationSpec<T>
+  spec: SpecFunction<T>
 ): Promise<PathHandle<T>> {
   return usePathHandle<T>(db, spec, []);
 }
 
 export async function useDocHandle<T>(
   db: PouchDB.Database,
-  spec: () => ValidationSpec<T>,
+  spec: SpecFunction<T>,
   docID: DocID
 ): Promise<DocHandle<T>> {
   try {
@@ -39,14 +39,17 @@ export async function useDocHandle<T>(
   const path = R.fromPairs(
     R.toPairs(spec().schema)
       .filter(([key, schema]) => !!schema.spec)
-      .map(([key, schema]) => async () => {
-        const doc = await resolve();
+      .map(([key, schema]) => [
+        key,
+        async () => {
+          const doc = await resolve();
 
-        return usePathHandle(db, schema.spec, [
-          ...(doc.path || []),
-          `${doc._id}:${key}`
-        ]);
-      })
+          return usePathHandle(db, schema.spec, [
+            ...(doc.path || []),
+            `${doc._id}:${key}`
+          ]);
+        }
+      ])
   );
 
   async function resolve() {
@@ -56,20 +59,17 @@ export async function useDocHandle<T>(
   async function mutate(mutator) {
     const doc = await resolve();
     const { _id } = doc;
-    const newDoc = await mutator(doc);
+    const newContent = await mutator(doc.content);
 
-    if (newDoc.content) {
+    if (newContent) {
       R.toPairs(spec().schema).forEach(([key, schema]) => {
         if (!!schema.spec) {
-          delete newDoc.content[key];
+          delete newContent[key];
         }
       });
     }
 
-    newDoc._id = _id;
-
-    await db.put(newDoc);
-
+    await db.put(R.assoc("content", newContent, doc));
   }
 
   return {
@@ -84,7 +84,7 @@ export async function useDocHandle<T>(
 
 export async function usePathHandle<T>(
   db: PouchDB.Database,
-  spec: () => ValidationSpec<T>,
+  spec: SpecFunction<T>,
   path: Path
 ): Promise<PathHandle<T>> {
   try {
@@ -123,12 +123,12 @@ export async function usePathHandle<T>(
     path,
     create,
     list,
-    find 
+    find
   };
 }
 
 export function getPathFilter<T>(
-  spec: () => ValidationSpec<T>,
+  spec: SpecFunction<T>,
   path: Path
 ): PouchDB.Find.Selector {
   let filterPath = path || [];
@@ -141,7 +141,7 @@ export function getPathFilter<T>(
 
 async function getMany<T>(
   db: PouchDB.Database,
-  spec: () => ValidationSpec<T>,
+  spec: SpecFunction<T>,
   path: Path,
   query?: ListQuery
 ): Promise<DocHandle<T>[]> {

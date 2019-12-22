@@ -1,5 +1,5 @@
 import * as PouchDB from "pouchdb";
-import { ValidationSpec } from "./validation";
+import { SpecFunction } from "./validation";
 
 export type DocID = string;
 
@@ -19,20 +19,20 @@ export interface ListQuery {
 
 export interface DocHandle<T> {
   readonly db: PouchDB.Database;
-  readonly spec: () => ValidationSpec<T>;
+  readonly spec: SpecFunction<T>;
   readonly docID: string;
   readonly path: {
     [K in keyof T]?: () => Promise<PathHandle<T[K]>>;
   };
   resolve(): Promise<Doc<T>>;
-  mutate(mutator: (doc: Doc<T>) => Doc<T>): Promise<void>;
+  mutate(mutator: (content?: Partial<T>) => Partial<T> | void): Promise<void>;
 }
 
 export interface PathHandle<T> {
   readonly db: PouchDB.Database;
-  readonly spec: () => ValidationSpec<T>;
+  readonly spec: SpecFunction<T>;
   readonly path: Path;
   create(): Promise<DocHandle<T>>;
-  list(query: ListQuery): Promise<DocHandle<T>[]>;
+  list(query?: ListQuery): Promise<DocHandle<T>[]>;
   find(id?: DocID): Promise<DocHandle<T> | void>;
 }

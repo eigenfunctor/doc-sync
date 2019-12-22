@@ -5,10 +5,10 @@ import {
   Validation,
   ValidationLib,
   ValidationSchema,
-  ValidationSpec
+  SpecFunction
 } from "./types";
 
-export async function defineOnly<T>(db, ...specs: (() => ValidationSpec<T>)[]) {
+export async function defineOnly<T>(db, ...specs: SpecFunction<T>[]) {
   let body = `
     var typeFound = false;
   `;
@@ -25,11 +25,12 @@ export async function defineOnly<T>(db, ...specs: (() => ValidationSpec<T>)[]) {
     `;
   }
 
-  const code = `
-    function (newDoc, savedDoc, userCtx) {
+  const code = `function (newDoc, savedDoc, userCtx) {
       ${body}
 
-      return typeFound
+      if (!typeFound) {
+        throw new Error({ forbidden: "Cannot find document type: " + newDoc.type })
+      }
     }
   `;
 
@@ -41,13 +42,13 @@ export async function defineOnly<T>(db, ...specs: (() => ValidationSpec<T>)[]) {
   try {
     await db.put(validationDDoc);
   } catch (e) {
-    console.warn(e);
+    console.warn("WARNING", e.message);
   }
 }
 
 export async function defineSpec<T>(
   db: PouchDB.Database,
-  spec: () => ValidationSpec<T>
+  spec: SpecFunction<T>
 ): Promise<void> {
   const validationDDoc = {
     _id: getValidationDocID(spec),
@@ -72,8 +73,7 @@ export async function defineSpec<T>(
     _id: getViewDocID(spec),
     views: {
       ids: {
-        map: `
-          function (doc) {
+        map: `function (doc) {
             ${viewGaurds}
 
             emit([doc.path, doc._id], null);
@@ -81,8 +81,7 @@ export async function defineSpec<T>(
         `
       },
       docs: {
-        map: `
-          function (doc) {
+        map: `function (doc) {
             ${viewGaurds}
 
             emit([doc.path, doc._id], doc);
@@ -95,37 +94,36 @@ export async function defineSpec<T>(
   try {
     await db.put(validationDDoc);
   } catch (e) {
-    console.warn(e);
+    console.warn("WARNING", e.message);
   }
 
   try {
     await db.put(viewDDoc);
   } catch (e) {
-    console.warn(e);
+    console.warn("WARNING", e.message);
   }
 }
 
-export function getViewDocID<T>(spec: () => ValidationSpec<T>): string {
+export function getViewDocID<T>(spec: SpecFunction<T>): string {
   return `_design/view_${spec().type}`;
 }
 
 export function getView<T>(
-  spec: () => ValidationSpec<T>,
+  spec: SpecFunction<T>,
   include_docs?: boolean
 ): string {
   return `view_${spec().type}/${include_docs ? "docs" : "ids"}`;
 }
 
-export function getValidationDocID<T>(spec: () => ValidationSpec<T>): string {
+export function getValidationDocID<T>(spec: SpecFunction<T>): string {
   return `_design/validate_${spec().type}`;
 }
 
-function createValidator<T>(spec: () => ValidationSpec<T>): string {
-  const validator = `
-    function (newDoc, savedDoc, userCtx) {
+function createValidator<T>(spec: SpecFunction<T>): string {
+  const validator = `function (newDoc, savedDoc, userCtx) {
       var errors = [];
 
-      var failIf = function(condition, message) {
+      var failIf = function (condition, message) {
         if (condition) {
           errors.push(message);
         }
@@ -133,11 +131,11 @@ function createValidator<T>(spec: () => ValidationSpec<T>): string {
       
       var lib = {
         failIf: failIf,
-        JSON: JSON;
-        isArray: isArray;
-        log: log;
-        sum: sum;
-        toJSON: toJSON;
+        JSON: JSON,
+        isArray: isArray,
+        log: log,
+        sum: sum,
+        toJSON: toJSON
       }
 
       if (!!newDoc.content) {
@@ -150,7 +148,7 @@ function createValidator<T>(spec: () => ValidationSpec<T>): string {
     }
   `;
 
-  function genValidationsFromSpec(spec: () => ValidationSpec<T>): string {
+  function genValidationsFromSpec(spec: SpecFunction<T>): string {
     function reducer(code, [key, schema]) {
       const isReference = !!schema.spec || false;
 
@@ -184,7 +182,7 @@ function createValidator<T>(spec: () => ValidationSpec<T>): string {
         var ${name} = ${validation.toString()};
 
         if ('${spec().type}' === newDoc.type) {
-          ${name}(lib, newDoc.content['${key}'])
+          ${name}(lib, newDoc.content['${key}']);
         }
       `;
     }
