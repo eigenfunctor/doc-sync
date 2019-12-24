@@ -116,7 +116,7 @@
 					<div class="tsd-signature tsd-kind-icon">DocID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/types/doc.ts#L4">types/doc.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/types/doc.ts#L4">types/doc.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -126,7 +126,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/types/doc.ts#L13">types/doc.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/types/doc.ts#L13">types/doc.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">Spec<wbr>Function&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/types/validation.ts#L4">types/validation.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/types/validation.ts#L4">types/validation.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">Validation&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/types/validation.ts#L66">types/validation.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/types/validation.ts#L66">types/validation.ts:66</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -180,7 +180,7 @@
 							<p>A <a href="globals.html#validation">Validation</a> is a function that takes a validation library and a documents content as input, and throws
 								a couchDB validation error object.
 							Example:</p>
-							<p>```
+							<p>```typescript
 								interface Post {
 								body: string;
 								reply: Post;
@@ -243,7 +243,7 @@ information is lost after function serialization.</code></pre>
 					<div class="tsd-signature tsd-kind-icon">Validation<wbr>Schema&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/types/validation.ts#L18">types/validation.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/types/validation.ts#L18">types/validation.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -277,7 +277,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/validation.ts#L159">validation.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/validation.ts#L158">validation.ts:158</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -306,7 +306,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/validation.ts#L24">validation.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/validation.ts#L23">validation.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -316,11 +316,11 @@ information is lost after function serialization.</code></pre>
 										update validation design document into the database that blocks any other document type
 										to be inserted into the database.
 									The following example with throw a validation error.</p>
-									<pre><code>define<span class="hljs-constructor">Only(<span class="hljs-params">refs</span>.<span class="hljs-params">db</span>, PostSpec)</span>
-await <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DS</span>.</span></span>use<span class="hljs-constructor">Root(<span class="hljs-params">refs</span>.<span class="hljs-params">db</span>, PostSpec)</span>
-  .<span class="hljs-keyword">then</span>(_ =&gt; <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">_</span>.</span></span>create<span class="hljs-literal">()</span>)
-  .<span class="hljs-keyword">then</span>(_ =&gt; <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">_</span>.</span></span>mutate(d =&gt; ({ ...d, <span class="hljs-keyword">type</span>: <span class="hljs-string">"non-existent"</span> })));</code></pre>
+									<p>```typescript
+									defineOnly(db, PostSpec)</p>
 								</div>
+								<p>await db.put({ _id: &quot;invalid-document&quot;, path: [], type: &quot;non-existent&quot; })</p>
+								<pre><code></code></pre>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -351,7 +351,7 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/validation.ts#L72">validation.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/validation.ts#L71">validation.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -395,7 +395,7 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/doc.ts#L172">doc.ts:172</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/doc.ts#L174">doc.ts:174</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -433,7 +433,7 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/doc.ts#L160">doc.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/doc.ts#L162">doc.ts:162</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -472,7 +472,7 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/validation.ts#L155">validation.ts:155</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/validation.ts#L154">validation.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -508,7 +508,7 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/validation.ts#L143">validation.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/validation.ts#L142">validation.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +546,7 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/validation.ts#L135">validation.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/validation.ts#L134">validation.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -582,16 +582,18 @@ await <span class="hljs-module-access"><span class="hljs-module"><span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/plugins.ts#L14">plugins.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/plugins.ts#L15">plugins.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Adds all required pouchdb plugins used by this library to the locally imported PouchDB module.
 									Example:</p>
-									<pre><code>var PouchDB = require(<span class="hljs-string">"pouchdb"</span>)<span class="hljs-comment">;</span>
-setupPlugins(<span class="hljs-name">PouchDB</span>)<span class="hljs-comment">;</span></code></pre>
+									<p>```typescript
+									var PouchDB = require(&quot;pouchdb&quot;);</p>
 								</div>
+								<p>setupPlugins(PouchDB);</p>
+								<pre><code></code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -613,7 +615,7 @@ setupPlugins(<span class="hljs-name">PouchDB</span>)<span class="hljs-comment">;
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/doc.ts#L92">doc.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/doc.ts#L94">doc.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -653,7 +655,7 @@ setupPlugins(<span class="hljs-name">PouchDB</span>)<span class="hljs-comment">;
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/doc.ts#L44">doc.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/doc.ts#L46">doc.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -693,26 +695,27 @@ setupPlugins(<span class="hljs-name">PouchDB</span>)<span class="hljs-comment">;
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f3dda78/src/doc.ts#L34">doc.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/7c8aff9/src/doc.ts#L36">doc.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a <a href="interfaces/pathhandle.html">PathHandle</a> to work with documents at the root (path = []) of the heirarchy.
+									<p>Creates a <a href="interfaces/pathhandle.html">PathHandle</a> to work with documents at the root path (empty array).
 									Example:</p>
-									<p>```
-									const root = DS.useRoot(refs.db, PostSpec);</p>
 								</div>
-								<p>await root
-									.then(_ =&gt; <em>.create())
-										.then(</em> =&gt; <em>.path.reply())
-								.then(</em> =&gt; _.create());</p>
-								<p>const list = await root.then(_ =&gt; _.list());</p>
-								<p>const replyList = await root
-									.then(_ =&gt; <em>.find())
-										.then(</em> =&gt; _ &amp;&amp; <em>.path.reply())
-								.then(</em> =&gt; _ &amp;&amp; _.list());</p>
-								<pre><code></code></pre>
+								<pre><code class="language-typescript"><span class="hljs-keyword">const</span> root = DS.useRoot(db, PostSpec);
+
+<span class="hljs-keyword">await</span> root
+  .then(_ =&gt; _.create())
+  .then(_ =&gt; _.path.reply())
+  .then(_ =&gt; _.create());
+
+<span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> root.then(_ =&gt; _.list());
+
+<span class="hljs-keyword">const</span> replyList = <span class="hljs-keyword">await</span> root
+  .then(_ =&gt; _.find())
+  .then(_ =&gt; _ &amp;&amp; _.path.reply())
+  .then(_ =&gt; _ &amp;&amp; _.list());</code></pre>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">

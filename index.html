@@ -77,6 +77,75 @@ npm install <span class="hljs-meta">@egfn</span>/doc-<span class="hljs-keyword">
 
 # <span class="hljs-keyword">with</span> yarn
 yarn add <span class="hljs-meta">@egfn</span>/doc-<span class="hljs-keyword">sync</span></code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h3>Usage</h3>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> DS <span class="hljs-keyword">from</span> <span class="hljs-string">"@egfn/doc-sync"</span>;
+<span class="hljs-keyword">import</span> PouchDB = <span class="hljs-built_in">require</span>(<span class="hljs-string">"pouchdb"</span>);
+
+DS.setupPlugins(PouchDB)
+
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">interface</span> Post {
+    body: <span class="hljs-built_in">string</span>;
+    reply: Post;
+
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PostSpec</span>(<span class="hljs-params"></span>): <span class="hljs-title">DS</span>.<span class="hljs-title">ValidationSpec</span>&lt;<span class="hljs-title">Post</span>&gt; </span>{
+      <span class="hljs-keyword">return</span> {
+      <span class="hljs-keyword">type</span>: <span class="hljs-string">"post"</span>,
+              schema: {
+body: {
+          required: <span class="hljs-literal">true</span>,
+                    validations: [
+            <span class="hljs-function">(<span class="hljs-params">lib, body</span>) =&gt;</span>
+              lib.failIf(body.length &gt; <span class="hljs-number">10</span>, <span class="hljs-string">"Post must be at most 256 characters"</span>)
+
+                    ]
+
+      },
+reply: {
+          spec: PostSpec
+
+       }
+
+              }
+
+      };
+
+    }
+
+  <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> PouchDB(<span class="hljs-string">`test_db`</span>, { adapter: <span class="hljs-string">"memory"</span>  });
+
+  <span class="hljs-comment">// @ts-ignore</span>
+  db.installValidationMethods(); <span class="hljs-comment">// required for local validation</span>
+
+  <span class="hljs-keyword">await</span> DS.defineOnly(db, PostSpec);
+
+  <span class="hljs-keyword">const</span> root = DS.usePathHandle(db, PostSpec, [<span class="hljs-string">"feed"</span>]);
+
+  <span class="hljs-keyword">await</span> root
+    .then(_ =&gt; _.create())
+    .then(_ =&gt; _.path.reply())
+    .then(_ =&gt; _.create());
+
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> root
+    .then(_ =&gt; _.list())
+    .then(_ =&gt; <span class="hljs-built_in">Promise</span>.all(_.map(<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h.resolve())));
+
+  <span class="hljs-keyword">const</span> replyList = <span class="hljs-keyword">await</span> root
+    .then(_ =&gt; _.find())
+    .then(_ =&gt; _ &amp;&amp; _.path.reply())
+    .then(_ =&gt; _ &amp;&amp; _.list())
+    .then(_ =&gt; _ &amp;&amp; <span class="hljs-built_in">Promise</span>.all(_.map(<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h.resolve())))
+
+  <span class="hljs-built_in">console</span>.log(list)
+  <span class="hljs-built_in">console</span>.log(replyList)
+
+  }
+
+main();</code></pre>
 				<a href="#api-reference" id="api-reference" style="color: inherit; text-decoration: none;">
 					<h3>API Reference</h3>
 				</a>
