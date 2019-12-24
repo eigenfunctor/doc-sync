@@ -5,6 +5,11 @@
   "repository": "https://github.com/eigenfunctor/doc-sync",
   "license": "MIT",
   "main": "build/index.js",
+  "files": [
+    "*",
+    "build/*",
+    "build/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "deploy:docs": "typedoc --mode file --out docs && gh-pages -d docs",
