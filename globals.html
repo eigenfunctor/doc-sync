@@ -172,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">Validation&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/types/validation.ts#L66">types/validation.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/types/validation.ts#L68">types/validation.ts:68</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -180,31 +180,31 @@
 							<p>A <a href="globals.html#validation">Validation</a> is a function that takes a validation library and a documents content as input, and throws
 								a couchDB validation error object.
 							Example:</p>
-							<p>```typescript
-								interface Post {
-								body: string;
-								reply: Post;
-							}</p>
 						</div>
-						<p>function PostSpec(): DS.ValidationSpec<Post> {
-								return {
-								type: &quot;post&quot;,
-								schema: {
-								body: {
-								required: true,
-								validations: [
-								(lib, body) =&gt;
-								lib.failIf(body.length &gt; 10, &quot;Post must be at most 256 characters&quot;)
-								]
-								},
-								reply: {
-								spec: PostSpec
-								}
-								}
-								};
-						}</p>
-						<pre><code><span class="hljs-symbol">NOTE: </span>Validations cannot close over variables outside the function's scope as all scope
-information is lost after function serialization.</code></pre>
+						<pre><code class="language-typescript"><span class="hljs-keyword">interface</span> Post {
+  body: <span class="hljs-built_in">string</span>;
+  reply: Post;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PostSpec</span>(<span class="hljs-params"></span>): <span class="hljs-title">DS</span>.<span class="hljs-title">ValidationSpec</span>&lt;<span class="hljs-title">Post</span>&gt; </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-keyword">type</span>: <span class="hljs-string">"post"</span>,
+    schema: {
+      body: {
+        required: <span class="hljs-literal">true</span>,
+        validations: [
+          <span class="hljs-function">(<span class="hljs-params">lib, body</span>) =&gt;</span>
+            lib.failIf(body.length &gt; <span class="hljs-number">10</span>, <span class="hljs-string">"Post must be at most 256 characters"</span>)
+        ]
+      },
+      reply: {
+        spec: PostSpec
+      }
+    }
+  };
+}</code></pre>
+						<p>NOTE: Validations cannot close over variables outside the function&#39;s scope as all scope
+						information is lost after function serialization.</p>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
@@ -277,7 +277,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L158">validation.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L159">validation.ts:159</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -306,7 +306,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L23">validation.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L24">validation.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -316,11 +316,10 @@ information is lost after function serialization.</code></pre>
 										update validation design document into the database that blocks any other document type
 										to be inserted into the database.
 									The following example with throw a validation error.</p>
-									<p>```typescript
-									defineOnly(db, PostSpec)</p>
 								</div>
-								<p>await db.put({ _id: &quot;invalid-document&quot;, path: [], type: &quot;non-existent&quot; })</p>
-								<pre><code></code></pre>
+								<pre><code class="language-typescript">defineOnly(db, PostSpec)
+
+<span class="hljs-keyword">await</span> db.put({ _id: <span class="hljs-string">"invalid-document"</span>, path: [], <span class="hljs-keyword">type</span>: <span class="hljs-string">"non-existent"</span> })</code></pre>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -351,7 +350,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L71">validation.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L72">validation.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -472,7 +471,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L154">validation.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L155">validation.ts:155</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -508,7 +507,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L142">validation.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L143">validation.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +545,7 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L134">validation.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L135">validation.ts:135</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -582,18 +581,17 @@ information is lost after function serialization.</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/plugins.ts#L15">plugins.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/plugins.ts#L17">plugins.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Adds all required pouchdb plugins used by this library to the locally imported PouchDB module.
 									Example:</p>
-									<p>```typescript
-									var PouchDB = require(&quot;pouchdb&quot;);</p>
 								</div>
-								<p>setupPlugins(PouchDB);</p>
-								<pre><code></code></pre>
+								<pre><code class="language-typescript"><span class="hljs-keyword">var</span> PouchDB = <span class="hljs-built_in">require</span>(<span class="hljs-string">"pouchdb"</span>);
+
+setupPlugins(PouchDB);</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
