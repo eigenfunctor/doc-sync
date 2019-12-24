@@ -15,7 +15,7 @@ function PostSpec(): DS.ValidationSpec<Post> {
         required: true,
         validations: [
           (lib, body) =>
-            lib.failIf(body.length > 10, "Post must be at most 256 characters")
+            lib.failIf(body.length > 10, "Post must be at most 10 characters")
         ]
       },
       reply: {
