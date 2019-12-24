@@ -42,9 +42,8 @@ describe("document modelling", () => {
     let failed = false;
 
     try {
-      await DS.useRoot(refs.db, PostSpec)
-        .then(_ => _.create())
-        .then(_ => _.mutate(d => ({ ...d, type: "non-existent" })));
+      const _id = "error-document";
+      await refs.db.put({ _id, type: "non-existent" });
     } catch (_) {
       failed = true;
     }
@@ -60,7 +59,7 @@ describe("document modelling", () => {
     try {
       await DS.useRoot(refs.db, PostSpec)
         .then(_ => _.create())
-        .then(_ => _.mutate(d => ({ ...d, content: { body } })));
+        .then(_ => _.mutate(c => ({ ...(c || {}), body })));
     } catch (_) {
       failed = true;
     }
@@ -72,10 +71,14 @@ describe("document modelling", () => {
     const root = DS.useRoot(refs.db, PostSpec);
     const body = new Array(10).fill("x").join("");
 
-    await root.then(_ => _.create()).then(_ => _.mutate(d => ({ body })));
+    const id = await root
+      .then(_ => _.create())
+      .then(async _ => {
+        await _.mutate(c => ({ ...(c || {}), body }));
+        return _.docID;
+      });
 
-    const docHandle = await root.then(_ => _.find());
-    const doc = docHandle && (await docHandle.resolve());
+    const doc = await root.then(_ => _.find(id)).then(_ => _ && _.resolve());
 
     expect(doc && doc.content.body).toEqual(body);
   });
@@ -112,7 +115,7 @@ describe("document modelling", () => {
         .then(_ => _.find())
         .then(_ => _ && _.path.reply())
         .then(_ => _ && _.find())
-        .then(_ => _ && _.mutate(c => ({ ...c, body })));
+        .then(_ => _ && _.mutate(c => ({ ...(c || {}), body })));
     } catch (_) {
       failed = true;
     }
@@ -129,7 +132,7 @@ describe("document modelling", () => {
       .then(_ => _.find())
       .then(_ => _ && _.path.reply())
       .then(_ => _ && _.find())
-      .then(_ => _ && _.mutate(c => ({ ...c, body })));
+      .then(_ => _ && _.mutate(c => ({ ...(c || {}), body })));
 
     const result = await root
       .then(_ => _.find())
