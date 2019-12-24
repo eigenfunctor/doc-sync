@@ -172,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">Validation&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/types/validation.ts#L68">types/validation.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/types/validation.ts#L71">types/validation.ts:71</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -194,7 +194,10 @@
         required: <span class="hljs-literal">true</span>,
         validations: [
           <span class="hljs-function">(<span class="hljs-params">lib, body</span>) =&gt;</span>
-            lib.failIf(body.length &gt; <span class="hljs-number">10</span>, <span class="hljs-string">"Post must be at most 256 characters"</span>)
+            lib.failIf(
+              body.length &gt; <span class="hljs-number">10</span>,
+              <span class="hljs-string">"Post must be at most 256 characters"</span>
+)
         ]
       },
       reply: {
@@ -277,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L159">validation.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L163">validation.ts:163</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -306,7 +309,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L24">validation.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L28">validation.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -319,7 +322,11 @@
 								</div>
 								<pre><code class="language-typescript">defineOnly(db, PostSpec)
 
-<span class="hljs-keyword">await</span> db.put({ _id: <span class="hljs-string">"invalid-document"</span>, path: [], <span class="hljs-keyword">type</span>: <span class="hljs-string">"non-existent"</span> })</code></pre>
+<span class="hljs-keyword">await</span> db.put({
+  _id: <span class="hljs-string">"invalid-document"</span>,
+  path: [],
+  <span class="hljs-keyword">type</span>: <span class="hljs-string">"non-existent"</span>
+})</code></pre>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -350,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L72">validation.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L76">validation.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -471,7 +478,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L155">validation.ts:155</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L159">validation.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,7 +514,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L143">validation.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L147">validation.ts:147</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -545,7 +552,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L135">validation.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/fbb1449/src/validation.ts#L139">validation.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
