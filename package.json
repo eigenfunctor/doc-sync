@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
+    "deploy:docs": "typedoc --mode file --out docs && gh-pages -d docs",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },
@@ -21,6 +22,7 @@
     "@types/node-fetch": "^2.5.4",
     "@types/pouchdb": "^6.4.0",
     "@types/pouchdb-core": "^7.0.5",
+    "gh-pages": "^2.1.1",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.2.0",
