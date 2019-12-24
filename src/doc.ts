@@ -12,6 +12,25 @@ import {
   PathHandle
 } from "./types";
 
+/**
+ * Creates a {@link PathHandle} to work with documents at the root (path = []) of the heirarchy.
+ * Example:
+ * ```
+ * const root = DS.useRoot(refs.db, PostSpec);
+ *
+ * await root
+ *   .then(_ => _.create())
+ *   .then(_ => _.path.reply())
+ *   .then(_ => _.create());
+ *
+ * const list = await root.then(_ => _.list());
+ *
+ * const replyList = await root
+ *   .then(_ => _.find())
+ *   .then(_ => _ && _.path.reply())
+ *   .then(_ => _ && _.list());
+ * ```
+ */
 export async function useRoot<T>(
   db: PouchDB.Database,
   spec: SpecFunction<T>
@@ -19,6 +38,57 @@ export async function useRoot<T>(
   return usePathHandle<T>(db, spec, []);
 }
 
+/**
+ * Creates a {@link PathHandle} to work with documents at the given path.
+ */
+export async function usePathHandle<T>(
+  db: PouchDB.Database,
+  spec: SpecFunction<T>,
+  path: Path
+): Promise<PathHandle<T>> {
+  try {
+    await db.get(getViewDocID(spec));
+  } catch (_) {
+    throw new Error(`Cannot find document type: ${spec().type}.`);
+  }
+
+  async function create() {
+    const doc = {
+      _id: uuid(),
+      path,
+      type: spec().type
+    };
+
+    await db.put(doc);
+
+    return useDocHandle(db, spec, doc._id);
+  }
+
+  async function list(query?) {
+    return getMany(db, spec, path, query);
+  }
+
+  async function find(id?) {
+    if (id) {
+      return useDocHandle(db, spec, id);
+    }
+
+    return (await list({ skip: 0, take: 1 }))[0];
+  }
+
+  return {
+    db,
+    spec,
+    path,
+    create,
+    list,
+    find
+  };
+}
+
+/**
+ * Creates a {@link DocHandle} to work with single document.
+ */
 export async function useDocHandle<T>(
   db: PouchDB.Database,
   spec: SpecFunction<T>,
@@ -82,51 +152,11 @@ export async function useDocHandle<T>(
   };
 }
 
-export async function usePathHandle<T>(
-  db: PouchDB.Database,
-  spec: SpecFunction<T>,
-  path: Path
-): Promise<PathHandle<T>> {
-  try {
-    await db.get(getViewDocID(spec));
-  } catch (_) {
-    throw new Error(`Cannot find document type: ${spec().type}.`);
-  }
-
-  async function create() {
-    const doc = {
-      _id: uuid(),
-      path,
-      type: spec().type
-    };
-
-    await db.put(doc);
-
-    return useDocHandle(db, spec, doc._id);
-  }
-
-  async function list(query?) {
-    return getMany(db, spec, path, query);
-  }
-
-  async function find(id?) {
-    if (id) {
-      return useDocHandle(db, spec, id);
-    }
-
-    return (await list({ skip: 0, take: 1 }))[0];
-  }
-
-  return {
-    db,
-    spec,
-    path,
-    create,
-    list,
-    find
-  };
-}
-
+/**
+ * Returns a [mango query](https://pouchdb.com/guides/mango-queries.html)
+ * that filters all documents nested under the given path. This is helpful
+ * for [filtered replication](https://pouchdb.com/api.html#filtered-replication)
+ */
 export function getPathFilter<T>(
   spec: SpecFunction<T>,
   path: Path

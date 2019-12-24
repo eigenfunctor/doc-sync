@@ -3,6 +3,14 @@ import PouchDBFind = require("pouchdb-find");
 import PouchDBValidation = require("pouchdb-validation");
 import PouchDBMemory = require("pouchdb-adapter-memory");
 
+/**
+ * Adds all required pouchdb plugins used by this library to the locally imported PouchDB module.
+ * Example:
+ * ```
+ * var PouchDB = require("pouchdb");
+ * setupPlugins(PouchDB);
+ * ```
+ */
 export function setupPlugins(PouchDB: any) {
   PouchDB.plugin(PouchDBFind);
   PouchDB.plugin(PouchDBValidation);

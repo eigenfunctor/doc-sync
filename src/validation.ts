@@ -8,6 +8,19 @@ import {
   SpecFunction
 } from "./types";
 
+/**
+ * Given a PouchDB database object and a list of {@link SpecFunction} elements,
+ * calls {@link defineSpec} on each {@link SpecFunction} and then inserts an
+ * update validation design document into the database that blocks any other document type
+ * to be inserted into the database.
+ * The following example with throw a validation error.
+ * ```
+ * defineOnly(refs.db, PostSpec)
+ * await DS.useRoot(refs.db, PostSpec)
+ *   .then(_ => _.create())
+ *   .then(_ => _.mutate(d => ({ ...d, type: "non-existent" })));
+ * ```
+ */
 export async function defineOnly<T>(db, ...specs: SpecFunction<T>[]) {
   let body = `
     var typeFound = false;
@@ -29,13 +42,13 @@ export async function defineOnly<T>(db, ...specs: SpecFunction<T>[]) {
       ${body}
 
       if (!typeFound) {
-        throw new Error({ forbidden: "Cannot find document type: " + newDoc.type })
+        throw({ forbidden: ["Cannot find document type: " + newDoc.type] });
       }
     }
   `;
 
   const validationDDoc = {
-    _id: "design/validate_allowed_doc_types",
+    _id: "_design/validate_allowed_doc_types",
     validate_doc_update: code
   };
 
@@ -46,6 +59,16 @@ export async function defineOnly<T>(db, ...specs: SpecFunction<T>[]) {
   }
 }
 
+/**
+ * Given a PouchDB database object and a {@link SpecFunction},
+ * {@link defineSpec} will insert an update validation design document
+ * that runs specified validation functions on each inserted document
+ * for defined specification type name.
+ * NOTE:
+ * if the `type` field of the document does not match the specified type name,
+ * the validation does not fail. If you want to only allow a specific list of
+ * document types see {@link defineOnly}.
+ */
 export async function defineSpec<T>(
   db: PouchDB.Database,
   spec: SpecFunction<T>
@@ -104,10 +127,19 @@ export async function defineSpec<T>(
   }
 }
 
+/**
+ * Get the design document id for the [view](https://docs.couchdb.org/en/2.3.1/ddocs/views/intro.html)
+ * that lists all documents specified by the given
+ * {@link SpecFunction} with paths as keys.
+ */
 export function getViewDocID<T>(spec: SpecFunction<T>): string {
   return `_design/view_${spec().type}`;
 }
 
+/**
+ * Gets the [view](https://docs.couchdb.org/en/2.3.1/ddocs/views/intro.html) path
+ * that can be used by [PouchDB query api](https://pouchdb.com/guides/queries.html)
+ */
 export function getView<T>(
   spec: SpecFunction<T>,
   include_docs?: boolean
@@ -115,6 +147,11 @@ export function getView<T>(
   return `view_${spec().type}/${include_docs ? "docs" : "ids"}`;
 }
 
+/**
+ * Get the design document id for the
+ * [update validation](https://docs.couchdb.org/en/stable/ddocs/ddocs.html#validate-document-update-functions)
+ * for the given {@link SpecFunction}.
+ */
 export function getValidationDocID<T>(spec: SpecFunction<T>): string {
   return `_design/validate_${spec().type}`;
 }
@@ -143,7 +180,7 @@ function createValidator<T>(spec: SpecFunction<T>): string {
       }
 
       if (errors.length > 0) {
-        throw new Error({ forbidden: JSON.stringify(errors) });
+        throw({ forbidden: errors });
       }
     }
   `;
