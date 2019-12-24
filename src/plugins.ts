@@ -6,10 +6,13 @@ import PouchDBMemory = require("pouchdb-adapter-memory");
 /**
  * Adds all required pouchdb plugins used by this library to the locally imported PouchDB module.
  * Example:
- * ```
+ *
+ * ```typescript
  * var PouchDB = require("pouchdb");
+ *
  * setupPlugins(PouchDB);
  * ```
+ *
  */
 export function setupPlugins(PouchDB: any) {
   PouchDB.plugin(PouchDBFind);

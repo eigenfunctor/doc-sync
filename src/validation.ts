@@ -14,11 +14,15 @@ import {
  * update validation design document into the database that blocks any other document type
  * to be inserted into the database.
  * The following example with throw a validation error.
- * ```
- * defineOnly(refs.db, PostSpec)
- * await DS.useRoot(refs.db, PostSpec)
- *   .then(_ => _.create())
- *   .then(_ => _.mutate(d => ({ ...d, type: "non-existent" })));
+ *
+ * ```typescript
+ * defineOnly(db, PostSpec)
+ *
+ * await db.put({
+ *   _id: "invalid-document",
+ *   path: [],
+ *   type: "non-existent"
+ * })
  * ```
  */
 export async function defineOnly<T>(db, ...specs: SpecFunction<T>[]) {

@@ -13,10 +13,11 @@ import {
 } from "./types";
 
 /**
- * Creates a {@link PathHandle} to work with documents at the root (path = []) of the heirarchy.
+ * Creates a {@link PathHandle} to work with documents at the root path (empty array).
  * Example:
- * ```
- * const root = DS.useRoot(refs.db, PostSpec);
+ *
+ * ```typescript
+ * const root = DS.useRoot(db, PostSpec);
  *
  * await root
  *   .then(_ => _.create())
@@ -30,6 +31,7 @@ import {
  *   .then(_ => _ && _.path.reply())
  *   .then(_ => _ && _.list());
  * ```
+ *
  */
 export async function useRoot<T>(
   db: PouchDB.Database,

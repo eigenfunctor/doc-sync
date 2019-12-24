@@ -36,7 +36,8 @@ export type ValidationSchema<T> = {
  * A {@link Validation} is a function that takes a validation library and a documents content as input, and throws
  * a couchDB validation error object.
  * Example:
- * ```
+ *
+ * ```typescript
  * interface Post {
  *   body: string;
  *   reply: Post;
@@ -50,7 +51,10 @@ export type ValidationSchema<T> = {
  *         required: true,
  *         validations: [
  *           (lib, body) =>
- *             lib.failIf(body.length > 10, "Post must be at most 256 characters")
+ *             lib.failIf(
+ *               body.length > 10,
+ *               "Post must be at most 10 characters"
+ *             )
  *         ]
  *       },
  *       reply: {
@@ -60,6 +64,7 @@ export type ValidationSchema<T> = {
  *   };
  * }
  * ```
+ *
  * NOTE: Validations cannot close over variables outside the function's scope as all scope
  * information is lost after function serialization.
  */

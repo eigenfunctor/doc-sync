@@ -26,8 +26,8 @@ export interface DocHandle<T> {
    * `path[key]` offers a function to acquire a @{@link PathHandle} to all associated documents
    * for the document field's key.
    * Example:
-   * ```
-   * const root = DS.useRoot(refs.db, PostSpec);
+   * ```typescript
+   * const root = DS.useRoot(db, PostSpec);
    *
    * const repliesHandle = await root
    *   .then(_ => _.create())
