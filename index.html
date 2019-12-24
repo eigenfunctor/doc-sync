@@ -99,7 +99,10 @@ DS.setupPlugins(PouchDB)
           required: <span class="hljs-literal">true</span>,
           validations: [
             <span class="hljs-function">(<span class="hljs-params">lib, body</span>) =&gt;</span>
-              lib.failIf(body.length &gt; <span class="hljs-number">10</span>, <span class="hljs-string">"Post must be at most 256 characters"</span>)
+              lib.failIf(
+                body.length &gt; <span class="hljs-number">10</span>,
+                <span class="hljs-string">"Post must be at most 10 characters"</span>
+              )
           ]
         },
         reply: {
