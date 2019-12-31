@@ -212,6 +212,7 @@ export async function getPathSelector<T>(
   };
 }
 
+/** @private */
 async function getMany<T>(
   db: PouchDB.Database,
   spec: SpecFunction<T>,

@@ -24,6 +24,7 @@ import {
  *   type: "non-existent"
  * })
  * ```
+ *
  */
 export async function defineOnly(db, ...specs: SpecFunction<any>[]) {
   let body = `
@@ -160,6 +161,7 @@ export function getValidationDocID<T>(spec: SpecFunction<T>): string {
   return `_design/validate_${spec().type}`;
 }
 
+/** @private */
 function createValidator<T>(spec: SpecFunction<T>): string {
   const validator = `function (newDoc, savedDoc, userCtx) {
       var errors = [];

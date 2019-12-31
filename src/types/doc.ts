@@ -1,13 +1,28 @@
 import * as PouchDB from "pouchdb";
-import { SpecFunction } from "./validation";
+import { SpecFunction, ValidationSpec } from "./validation";
 
 export type DocID = string;
 
 export interface Doc<T> {
+  /**
+   * Unique document ID.
+   */
   _id: DocID;
+  /**
+   * Name of the database the document was created in.
+   */
   originDB: string;
+  /**
+   * Lexographic path to the location of the document.
+   */
   path: Path;
+  /**
+   * Type of the document, comes from a {@link ValidationSpec}
+   */
   type: string;
+  /**
+   * The contents of the document. All content record keys are optional.
+   */
   content?: Partial<T>;
 }
 
@@ -27,6 +42,7 @@ export interface DocHandle<T> {
    * `path[key]` offers a function to acquire a @{@link PathHandle} to all associated documents
    * for the document field's key.
    * Example:
+   *
    * ```typescript
    * const root = DS.useRoot(db, PostSpec);
    *
@@ -34,6 +50,7 @@ export interface DocHandle<T> {
    *   .then(_ => _.create())
    *   .then(_ => _.path.reply())
    * ```
+   *
    */
   readonly path: {
     [K in keyof T]?: () => Promise<PathHandle<T[K]>>;

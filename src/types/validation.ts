@@ -22,25 +22,27 @@ export interface ValidationSpec<T> {
  * its associated data type.
  */
 export type ValidationSchema<T> = {
-  readonly [K in keyof T]?: {
-    /**
-     * Reference to another data specification ({@link SpecFunction})
-     */
-    spec?: SpecFunction<T[K]>;
-    /**
-     * Whether or not the field is required.
-     */
-    required?: boolean;
-    /**
-     * A list of {@link Validation} elements to run inside pouchdb or couchdb validation updates.
-     */
-    validations?: Validation<T[K]>[];
-  };
+  readonly [K in keyof T]?: FieldValidationSchema<T[K]>;
 };
 
+export interface FieldValidationSchema<T> {
+  /**
+   * Reference to another data specification ({@link SpecFunction})
+   */
+  spec?: SpecFunction<T>;
+  /**
+   * Whether or not the field is required.
+   */
+  required?: boolean;
+  /**
+   * A list of {@link Validation} elements to run inside pouchdb or couchdb validation updates.
+   */
+  validations?: Validation<T>[];
+}
+
 /**
- * A {@link Validation} is a function that takes a validation library and a documents content as input, and throws
- * a couchDB validation error object.
+ * A {@link Validation} is a function that takes a validation library and a document's content as input, and throws
+ * a couchDB validation error object if the validation fails.
  * Example:
  *
  * ```typescript
