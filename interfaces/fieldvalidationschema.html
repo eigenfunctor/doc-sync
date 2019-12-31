@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PathHandle | @egfn/doc-sync</title>
+	<title>FieldValidationSchema | @egfn/doc-sync</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="pathhandle.html">PathHandle</a>
+					<a href="fieldvalidationschema.html">FieldValidationSchema</a>
 				</li>
 			</ul>
-			<h1>Interface PathHandle&lt;T&gt;</h1>
+			<h1>Interface FieldValidationSchema&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -78,7 +78,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PathHandle</span>
+						<span class="target">FieldValidationSchema</span>
 					</li>
 				</ul>
 			</section>
@@ -89,18 +89,9 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#db" class="tsd-kind-icon">db</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#path" class="tsd-kind-icon">path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#spec" class="tsd-kind-icon">spec</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#find" class="tsd-kind-icon">find</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#list" class="tsd-kind-icon">list</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="pathhandle.html#selector" class="tsd-kind-icon">selector</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="fieldvalidationschema.html#required" class="tsd-kind-icon">required</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="fieldvalidationschema.html#spec" class="tsd-kind-icon">spec</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="fieldvalidationschema.html#validations" class="tsd-kind-icon">validations</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,143 +100,49 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="db" class="tsd-anchor"></a>
-					<h3>db</h3>
-					<div class="tsd-signature tsd-kind-icon">db<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Database</span></div>
+					<a name="required" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> required</h3>
+					<div class="tsd-signature tsd-kind-icon">required<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L69">types/doc.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/validation.ts#L36">types/validation.ts:36</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="path" class="tsd-anchor"></a>
-					<h3>path</h3>
-					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <a href="../globals.html#path" class="tsd-signature-type">Path</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L71">types/doc.ts:71</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether or not the field is required.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="spec" class="tsd-anchor"></a>
-					<h3>spec</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> spec</h3>
 					<div class="tsd-signature tsd-kind-icon">spec<span class="tsd-signature-symbol">:</span> <a href="../globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L70">types/doc.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/validation.ts#L32">types/validation.ts:32</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reference to another data specification (<a href="../globals.html#specfunction">SpecFunction</a>)</p>
+						</div>
+					</div>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a name="create" class="tsd-anchor"></a>
-					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L83">types/doc.ts:83</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>create()</code> will add a new document under the <a href="pathhandle.html">PathHandle</a>&#39;s path,
-									and then yield its document handle.`</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a name="find" class="tsd-anchor"></a>
-					<h3>find</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">?: </span><a href="../globals.html#docid" class="tsd-signature-type">DocID</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L93">types/doc.ts:93</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>find(id?)</code> will yield a ducment handle to the document with the specified ID,
-									or the first document handle that comes from <code>list()</code></p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> id: <a href="../globals.html#docid" class="tsd-signature-type">DocID</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a name="list" class="tsd-anchor"></a>
-					<h3>list</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">?: </span><a href="listquery.html" class="tsd-signature-type">ListQuery</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L88">types/doc.ts:88</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>list()</code> will yield a paginated list of document handles to the collection of documents
-									under the {@link PathHandles}&#39;s path</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> query: <a href="listquery.html" class="tsd-signature-type">ListQuery</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a name="selector" class="tsd-anchor"></a>
-					<h3>selector</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">selector<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Selector</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L78">types/doc.ts:78</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>selector()</code> will return the <a href="https://pouchdb.com/guides/mango-queries.html">mango query</a>
-										to filter every document under this <a href="pathhandle.html">PathHandle</a>&#39;s path
-										with all documents originating from the database under this
-									<a href="pathhandle.html">PathHandle</a>.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Selector</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="validations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> validations</h3>
+					<div class="tsd-signature tsd-kind-icon">validations<span class="tsd-signature-symbol">:</span> <a href="../globals.html#validation" class="tsd-signature-type">Validation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/validation.ts#L40">types/validation.ts:40</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A list of <a href="../globals.html#validation">Validation</a> elements to run inside pouchdb or couchdb validation updates.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -265,42 +162,30 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
 						<a href="dochandle.html" class="tsd-kind-icon">Doc<wbr>Handle</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
-						<a href="fieldvalidationschema.html" class="tsd-kind-icon">Field<wbr>Validation<wbr>Schema</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="listquery.html" class="tsd-kind-icon">List<wbr>Query</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-has-type-parameter tsd-is-external">
-						<a href="pathhandle.html" class="tsd-kind-icon">Path<wbr>Handle</a>
+						<a href="fieldvalidationschema.html" class="tsd-kind-icon">Field<wbr>Validation<wbr>Schema</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#db" class="tsd-kind-icon">db</a>
+								<a href="fieldvalidationschema.html#required" class="tsd-kind-icon">required</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#path" class="tsd-kind-icon">path</a>
+								<a href="fieldvalidationschema.html#spec" class="tsd-kind-icon">spec</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#spec" class="tsd-kind-icon">spec</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#find" class="tsd-kind-icon">find</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#list" class="tsd-kind-icon">list</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="pathhandle.html#selector" class="tsd-kind-icon">selector</a>
+								<a href="fieldvalidationschema.html#validations" class="tsd-kind-icon">validations</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="listquery.html" class="tsd-kind-icon">List<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="pathhandle.html" class="tsd-kind-icon">Path<wbr>Handle</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="validationlib.html" class="tsd-kind-icon">Validation<wbr>Lib</a>
 					</li>

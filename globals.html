@@ -72,6 +72,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter tsd-is-external"><a href="interfaces/doc.html" class="tsd-kind-icon">Doc</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter tsd-is-external"><a href="interfaces/dochandle.html" class="tsd-kind-icon">Doc<wbr>Handle</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter tsd-is-external"><a href="interfaces/fieldvalidationschema.html" class="tsd-kind-icon">Field<wbr>Validation<wbr>Schema</a></li>
 								<li class="tsd-kind-interface tsd-is-external"><a href="interfaces/listquery.html" class="tsd-kind-icon">List<wbr>Query</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter tsd-is-external"><a href="interfaces/pathhandle.html" class="tsd-kind-icon">Path<wbr>Handle</a></li>
 								<li class="tsd-kind-interface tsd-is-external"><a href="interfaces/validationlib.html" class="tsd-kind-icon">Validation<wbr>Lib</a></li>
@@ -91,11 +92,12 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported"><a href="globals.html#createvalidator" class="tsd-kind-icon">create<wbr>Validator</a></li>
-								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#defineonly" class="tsd-kind-icon">define<wbr>Only</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported"><a href="globals.html#createvalidator" class="tsd-kind-icon">create<wbr>Validator</a></li>
+								<li class="tsd-kind-function tsd-is-external"><a href="globals.html#defineonly" class="tsd-kind-icon">define<wbr>Only</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#definespec" class="tsd-kind-icon">define<wbr>Spec</a></li>
-								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported"><a href="globals.html#getmany" class="tsd-kind-icon">get<wbr>Many</a></li>
-								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#getpathfilter" class="tsd-kind-icon">get<wbr>Path<wbr>Filter</a></li>
+								<li class="tsd-kind-function tsd-is-external"><a href="globals.html#getdbname" class="tsd-kind-icon">getDBName</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported"><a href="globals.html#getmany" class="tsd-kind-icon">get<wbr>Many</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#getpathselector" class="tsd-kind-icon">get<wbr>Path<wbr>Selector</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#getvalidationdocid" class="tsd-kind-icon">get<wbr>Validation<wbr>DocID</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#getview" class="tsd-kind-icon">get<wbr>View</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter tsd-is-external"><a href="globals.html#getviewdocid" class="tsd-kind-icon">get<wbr>View<wbr>DocID</a></li>
@@ -116,7 +118,7 @@
 					<div class="tsd-signature tsd-kind-icon">DocID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/doc.ts#L4">types/doc.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L4">types/doc.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -126,7 +128,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/doc.ts#L13">types/doc.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L29">types/doc.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">Spec<wbr>Function&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/validation.ts#L4">types/validation.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/validation.ts#L4">types/validation.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,13 +174,13 @@
 					<div class="tsd-signature tsd-kind-icon">Validation&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/validation.ts#L71">types/validation.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/validation.ts#L79">types/validation.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>A <a href="globals.html#validation">Validation</a> is a function that takes a validation library and a documents content as input, and throws
-								a couchDB validation error object.
+							<p>A <a href="globals.html#validation">Validation</a> is a function that takes a validation library and a document&#39;s content as input, and throws
+								a couchDB validation error object if the validation fails.
 							Example:</p>
 						</div>
 						<pre><code class="language-typescript"><span class="hljs-keyword">interface</span> Post {
@@ -246,7 +248,7 @@
 					<div class="tsd-signature tsd-kind-icon">Validation<wbr>Schema&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/validation.ts#L18">types/validation.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/validation.ts#L24">types/validation.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -270,19 +272,21 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 					<a name="createvalidator" class="tsd-anchor"></a>
-					<h3>create<wbr>Validator</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> create<wbr>Validator</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Validator&lt;T&gt;<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/validation.ts#L163">validation.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/validation.ts#L165">validation.ts:165</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -299,17 +303,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-external">
 					<a name="defineonly" class="tsd-anchor"></a>
 					<h3>define<wbr>Only</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">define<wbr>Only&lt;T&gt;<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, <span class="tsd-signature-symbol">...</span>specs<span class="tsd-signature-symbol">: </span><a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">define<wbr>Only<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, <span class="tsd-signature-symbol">...</span>specs<span class="tsd-signature-symbol">: </span><a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/validation.ts#L28">validation.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/validation.ts#L29">validation.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -328,19 +332,13 @@
   <span class="hljs-keyword">type</span>: <span class="hljs-string">"non-existent"</span>
 })</code></pre>
 							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>db: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>specs: <a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>specs: <a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -357,7 +355,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/validation.ts#L76">validation.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/validation.ts#L77">validation.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -391,19 +389,50 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-external">
+					<a name="getdbname" class="tsd-anchor"></a>
+					<h3>getDBName</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">getDBName<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Database</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/doc.ts#L169">doc.ts:169</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the database name of the given PouchDB database.
+									Throws an error if the database is not reachable.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>db: <span class="tsd-signature-type">Database</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 					<a name="getmany" class="tsd-anchor"></a>
-					<h3>get<wbr>Many</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Many</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Many&lt;T&gt;<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Database</span>, spec<span class="tsd-signature-symbol">: </span><a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><a href="globals.html#path" class="tsd-signature-type">Path</a>, query<span class="tsd-signature-symbol">?: </span><a href="interfaces/listquery.html" class="tsd-signature-type">ListQuery</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/dochandle.html" class="tsd-signature-type">DocHandle</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/doc.ts#L174">doc.ts:174</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/doc.ts#L216">doc.ts:216</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -430,23 +459,24 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter tsd-is-external">
-					<a name="getpathfilter" class="tsd-anchor"></a>
-					<h3>get<wbr>Path<wbr>Filter</h3>
+					<a name="getpathselector" class="tsd-anchor"></a>
+					<h3>get<wbr>Path<wbr>Selector</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Path<wbr>Filter&lt;T&gt;<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><a href="globals.html#path" class="tsd-signature-type">Path</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Selector</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Path<wbr>Selector&lt;T&gt;<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Database</span>, spec<span class="tsd-signature-symbol">: </span><a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><a href="globals.html#path" class="tsd-signature-type">Path</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Selector</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/doc.ts#L162">doc.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/doc.ts#L185">doc.ts:185</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns a <a href="https://pouchdb.com/guides/mango-queries.html">mango query</a>
-										that filters all documents nested under the given path. This is helpful
-									for <a href="https://pouchdb.com/api.html#filtered-replication">filtered replication</a></p>
+										that filters all documents that match the given $<a href="globals.html#specfunction">SpecFunction</a>,
+										are nested under the given path, and originate from the . This is helpful for
+									<a href="https://pouchdb.com/api.html#filtered-replication">filtered replication</a></p>
 								</div>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -458,13 +488,16 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
+									<h5>db: <span class="tsd-signature-type">Database</span></h5>
+								</li>
+								<li>
 									<h5>spec: <a href="globals.html#specfunction" class="tsd-signature-type">SpecFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>path: <a href="globals.html#path" class="tsd-signature-type">Path</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Selector</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Selector</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -478,7 +511,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/validation.ts#L159">validation.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/validation.ts#L160">validation.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -514,7 +547,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/validation.ts#L147">validation.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/validation.ts#L148">validation.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -552,7 +585,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/validation.ts#L139">validation.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/validation.ts#L140">validation.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -588,7 +621,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/plugins.ts#L17">plugins.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/plugins.ts#L17">plugins.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -620,7 +653,7 @@ setupPlugins(PouchDB);</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/doc.ts#L94">doc.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/doc.ts#L102">doc.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -660,7 +693,7 @@ setupPlugins(PouchDB);</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/doc.ts#L46">doc.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/doc.ts#L46">doc.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -700,7 +733,7 @@ setupPlugins(PouchDB);</code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/doc.ts#L36">doc.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/doc.ts#L36">doc.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -759,6 +792,9 @@ setupPlugins(PouchDB);</code></pre>
 					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
 						<a href="interfaces/dochandle.html" class="tsd-kind-icon">Doc<wbr>Handle</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="interfaces/fieldvalidationschema.html" class="tsd-kind-icon">Field<wbr>Validation<wbr>Schema</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="interfaces/listquery.html" class="tsd-kind-icon">List<wbr>Query</a>
 					</li>
@@ -786,20 +822,23 @@ setupPlugins(PouchDB);</code></pre>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter tsd-is-external">
 						<a href="globals.html#validationschema" class="tsd-kind-icon">Validation<wbr>Schema</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 						<a href="globals.html#createvalidator" class="tsd-kind-icon">create<wbr>Validator</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
+					<li class=" tsd-kind-function tsd-is-external">
 						<a href="globals.html#defineonly" class="tsd-kind-icon">define<wbr>Only</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
 						<a href="globals.html#definespec" class="tsd-kind-icon">define<wbr>Spec</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="globals.html#getdbname" class="tsd-kind-icon">getDBName</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 						<a href="globals.html#getmany" class="tsd-kind-icon">get<wbr>Many</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
-						<a href="globals.html#getpathfilter" class="tsd-kind-icon">get<wbr>Path<wbr>Filter</a>
+						<a href="globals.html#getpathselector" class="tsd-kind-icon">get<wbr>Path<wbr>Selector</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
 						<a href="globals.html#getvalidationdocid" class="tsd-kind-icon">get<wbr>Validation<wbr>DocID</a>

@@ -91,6 +91,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="doc.html#_id" class="tsd-kind-icon">_id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="doc.html#content" class="tsd-kind-icon">content</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="doc.html#origindb" class="tsd-kind-icon">originDB</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="doc.html#path" class="tsd-kind-icon">path</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="doc.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
@@ -106,9 +107,14 @@
 					<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <a href="../globals.html#docid" class="tsd-signature-type">DocID</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/doc.ts#L7">types/doc.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L10">types/doc.ts:10</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Unique document ID.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="content" class="tsd-anchor"></a>
@@ -116,9 +122,29 @@
 					<div class="tsd-signature tsd-kind-icon">content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/doc.ts#L10">types/doc.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L26">types/doc.ts:26</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The contents of the document. All content record keys are optional.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="origindb" class="tsd-anchor"></a>
+					<h3>originDB</h3>
+					<div class="tsd-signature tsd-kind-icon">originDB<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L14">types/doc.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Name of the database the document was created in.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="path" class="tsd-anchor"></a>
@@ -126,9 +152,14 @@
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <a href="../globals.html#path" class="tsd-signature-type">Path</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/doc.ts#L8">types/doc.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L18">types/doc.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Lexographic path to the location of the document.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="type" class="tsd-anchor"></a>
@@ -136,9 +167,14 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/0777d38/src/types/doc.ts#L9">types/doc.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/eigenfunctor/doc-sync/blob/f9270c2/src/types/doc.ts#L22">types/doc.ts:22</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type of the document, comes from a <a href="validationspec.html">ValidationSpec</a></p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -164,6 +200,9 @@
 								<a href="doc.html#content" class="tsd-kind-icon">content</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="doc.html#origindb" class="tsd-kind-icon">originDB</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 								<a href="doc.html#path" class="tsd-kind-icon">path</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
@@ -175,6 +214,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
 						<a href="dochandle.html" class="tsd-kind-icon">Doc<wbr>Handle</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="fieldvalidationschema.html" class="tsd-kind-icon">Field<wbr>Validation<wbr>Schema</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="listquery.html" class="tsd-kind-icon">List<wbr>Query</a>
@@ -203,20 +245,23 @@
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter tsd-is-external">
 						<a href="../globals.html#validationschema" class="tsd-kind-icon">Validation<wbr>Schema</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 						<a href="../globals.html#createvalidator" class="tsd-kind-icon">create<wbr>Validator</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
+					<li class=" tsd-kind-function tsd-is-external">
 						<a href="../globals.html#defineonly" class="tsd-kind-icon">define<wbr>Only</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
 						<a href="../globals.html#definespec" class="tsd-kind-icon">define<wbr>Spec</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external tsd-is-not-exported">
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="../globals.html#getdbname" class="tsd-kind-icon">getDBName</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-private tsd-is-external tsd-is-not-exported">
 						<a href="../globals.html#getmany" class="tsd-kind-icon">get<wbr>Many</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
-						<a href="../globals.html#getpathfilter" class="tsd-kind-icon">get<wbr>Path<wbr>Filter</a>
+						<a href="../globals.html#getpathselector" class="tsd-kind-icon">get<wbr>Path<wbr>Selector</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-external">
 						<a href="../globals.html#getvalidationdocid" class="tsd-kind-icon">get<wbr>Validation<wbr>DocID</a>
