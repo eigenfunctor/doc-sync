@@ -7,7 +7,13 @@ export type SpecFunction<T> = () => ValidationSpec<T>;
  * A {@link ValidationSpec} keeps track of a type name and a schema.
  */
 export interface ValidationSpec<T> {
+  /**
+   * Unique string indentifying the type of a document after serialization.
+   */
   type: string;
+  /**
+   * See {@link ValidationSchema}.
+   */
   schema: ValidationSchema<T>;
 }
 
@@ -20,7 +26,7 @@ export type ValidationSchema<T> = {
     /**
      * Reference to another data specification ({@link SpecFunction})
      */
-    spec?: SpecFunction<T>;
+    spec?: SpecFunction<T[K]>;
     /**
      * Whether or not the field is required.
      */
@@ -73,7 +79,7 @@ export type Validation<T> = (lib: ValidationLib, content: T[]) => void;
 /**
  * Since validation functions are not allowed
  * to close over scope variables, {@link ValidationLib}
- * objects contain some helpers to use in validations.
+ * objects contain some helpers to use in validation functions.
  */
 export interface ValidationLib {
   failIf(condition: boolean, message: string): void;

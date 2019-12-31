@@ -5,6 +5,7 @@ export type DocID = string;
 
 export interface Doc<T> {
   _id: DocID;
+  originDB: string;
   path: Path;
   type: string;
   content?: Partial<T>;
@@ -52,7 +53,14 @@ export interface PathHandle<T> {
   readonly spec: SpecFunction<T>;
   readonly path: Path;
   /**
-   * `create()` will add and a new document under the {@link PathHandle}'s' path,
+   * `selector()` will return the [mango query](https://pouchdb.com/guides/mango-queries.html)
+   * to filter every document under this {@link PathHandle}'s path
+   * with all documents originating from the database under this
+   * {@link PathHandle}.
+   */
+  selector(): Promise<PouchDB.Find.Selector>;
+  /**
+   * `create()` will add a new document under the {@link PathHandle}'s path,
    *  and then yield its document handle.`
    */
   create(): Promise<DocHandle<T>>;

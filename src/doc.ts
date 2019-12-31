@@ -54,9 +54,12 @@ export async function usePathHandle<T>(
     throw new Error(`Cannot find document type: ${spec().type}.`);
   }
 
+  const originDB = await getDBName(db);
+
   async function create() {
     const doc = {
       _id: uuid(),
+      originDB,
       path,
       type: spec().type
     };
@@ -78,10 +81,15 @@ export async function usePathHandle<T>(
     return (await list({ skip: 0, take: 1 }))[0];
   }
 
+  async function selector() {
+    return getPathSelector<T>(db, spec, path);
+  }
+
   return {
     db,
     spec,
     path,
+    selector,
     create,
     list,
     find
@@ -155,18 +163,51 @@ export async function useDocHandle<T>(
 }
 
 /**
- * Returns a [mango query](https://pouchdb.com/guides/mango-queries.html)
- * that filters all documents nested under the given path. This is helpful
- * for [filtered replication](https://pouchdb.com/api.html#filtered-replication)
+ * Returns the database name of the given PouchDB database.
+ * Throws an error if the database is not reachable.
  */
-export function getPathFilter<T>(
+export async function getDBName(db: PouchDB.Database): Promise<string> {
+  const dbInfo = await db.info();
+
+  if (!dbInfo.db_name) {
+    throw new Error("Cannot get database name from PouchDB");
+  }
+
+  return dbInfo.db_name;
+}
+
+/**
+ * Returns a [mango query](https://pouchdb.com/guides/mango-queries.html)
+ * that filters all documents that match the given ${@link SpecFunction},
+ * are nested under the given path, and originate from the . This is helpful for
+ * [filtered replication](https://pouchdb.com/api.html#filtered-replication)
+ */
+export async function getPathSelector<T>(
+  db: PouchDB.Database,
   spec: SpecFunction<T>,
   path: Path
-): PouchDB.Find.Selector {
-  let filterPath = path || [];
+): Promise<PouchDB.Find.Selector> {
+  async function traverse(spec, state = { filter: [], visited: [] }) {
+    if (!spec || state.visited.includes(spec().type)) {
+      return state;
+    }
+
+    state.filter.push({ type: spec().type });
+    state.visited.push(spec().type);
+
+    R.toPairs(spec().schema).forEach(([key, schema]) =>
+      traverse(schema.spec, state)
+    );
+
+    return state;
+  }
+
+  const filterPath = path || [];
+  const traversalState = await traverse(spec);
 
   return {
-    type: { $eq: spec().type },
+    originDB: await getDBName(db),
+    $or: traversalState.filter,
     path: [{ $gte: [...filterPath, ""] }, { $lte: [...filterPath, "\ufff0"] }]
   };
 }

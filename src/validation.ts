@@ -25,7 +25,7 @@ import {
  * })
  * ```
  */
-export async function defineOnly<T>(db, ...specs: SpecFunction<T>[]) {
+export async function defineOnly(db, ...specs: SpecFunction<any>[]) {
   let body = `
     var typeFound = false;
   `;
@@ -179,8 +179,10 @@ function createValidator<T>(spec: SpecFunction<T>): string {
         toJSON: toJSON
       }
 
-      if (!!newDoc.content) {
-        ${genValidationsFromSpec(spec)}
+      if (newDoc.type === '${spec().type}') {
+        if (!!newDoc.content) {
+          ${genValidationsFromSpec(spec)}
+        }
       }
 
       if (errors.length > 0) {
@@ -222,9 +224,7 @@ function createValidator<T>(spec: SpecFunction<T>): string {
 
         var ${name} = ${validation.toString()};
 
-        if ('${spec().type}' === newDoc.type) {
-          ${name}(lib, newDoc.content['${key}']);
-        }
+        ${name}(lib, newDoc.content['${key}']);
       `;
     }
 

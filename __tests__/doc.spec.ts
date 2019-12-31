@@ -5,6 +5,12 @@ import { createLocalDB } from "./util";
 interface Post {
   body: string;
   reply: Post;
+  attachment: Attachment;
+}
+
+interface Attachment {
+  name: string;
+  file: string;
 }
 
 function PostSpec(): DS.ValidationSpec<Post> {
@@ -20,6 +26,27 @@ function PostSpec(): DS.ValidationSpec<Post> {
       },
       reply: {
         spec: PostSpec
+      },
+      attachment: {
+        spec: AttachmentSpec
+      }
+    }
+  };
+}
+
+function AttachmentSpec(): DS.ValidationSpec<Attachment> {
+  return {
+    type: "attachment",
+    schema: {
+      name: {
+        required: true,
+        validations: [
+          (lib, name) =>
+            lib.failIf(
+              name.length > 10,
+              "Attachment name must be at most 10 characters"
+            )
+        ]
       }
     }
   };
@@ -29,13 +56,26 @@ describe("document modelling", () => {
   const refs = createLocalDB();
 
   it("should define a cyclic document model", async () => {
-    await DS.defineOnly(refs.db, PostSpec);
+    await DS.defineOnly(refs.db, PostSpec, AttachmentSpec);
 
     const root = await DS.useRoot(refs.db, PostSpec);
+
+    const selector = await root.selector();
 
     expect(root.db).toEqual(refs.db);
     expect(root.spec).toEqual(PostSpec);
     expect(root.path).toEqual([]);
+  });
+
+  it("should generate the correct mango query", async () => {
+    const root = await DS.useRoot(refs.db, PostSpec);
+
+    const selector = await root.selector();
+
+    expect(selector.originDB).toEqual(await DS.getDBName(refs.db));
+    expect(selector.$or).toContainEqual({ type: "post" });
+    expect(selector.$or).toContainEqual({ type: "attachment" });
+    expect(selector.path).toEqual([{ $gte: [""] }, { $lte: ["\ufff0"] }]);
   });
 
   it("should reject documents that aren't among the allowed document types", async () => {
